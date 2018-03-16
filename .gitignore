@@ -2,4 +2,3 @@ config.ini
 src/__pycache__
 src/initializetion/__pycache__
 src/function/__pycache__
-src/test.py

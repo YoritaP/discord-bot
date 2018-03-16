@@ -1,9 +1,25 @@
 from initializetion import init
 import getMessage
+import discord
+from bitcoinrpc.authproxy import AuthServiceProxy
 
-@init.discord_client.event
+# bitcoin rpc
+rpc_connection = AuthServiceProxy
+#discord client
+discord_client = discord.Client()
+
+#bot ready!
+@discord_client.event
+async def on_ready():
+    print("Logged in as")
+    print(discord_client.user.name)
+    print(discord_client.user.id)
+    print("---------------")
+
+@discord_client.event
 async def on_message(message):
-    await getMessage.getMessage(init.discord_client, message)
+    await getMessage.getMessage(rpc_connection, discord_client, message)
 
 if __name__ == '__main__':
-    init.init()
+    token, rpc_connection = init.init()
+    discord_client.run(token)

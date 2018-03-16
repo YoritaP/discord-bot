@@ -9,4 +9,7 @@ pythonで動くdiscord botの開発をしています。
 [bitcoin]
 rpc_name=name
 rpc_pass=pass
+
+[discord]
+token=login_token
 ```
