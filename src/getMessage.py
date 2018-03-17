@@ -29,6 +29,10 @@ async def getMessage(rpc, client, message):
         responce = function.generate.mining(rpc, client, message)
         await client.send_message(message.channel, embed=responce)
 
+    if message.content.startswith("!pre_mining"):
+        responce = function.generate.pre_mining(rpc, client, message)
+        await client.send_message(message.channel, embed=responce)
+
     if message.content.startswith("!faucet"):
         responce = function.tip.faucet(rpc, client, message)
         await client.send_message(message.channel, embed=responce)

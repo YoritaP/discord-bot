@@ -1,15 +1,17 @@
 import discord
 
+
 #get bitcoin balance
 def faucet(rpc, client, message):
     print("called : tip:faucet")
     
     balance = rpc.getbalance("")
+    print("Amount : " + str(balance))
     amount = balance / 100
 
+    rpc.getaccountaddress(message.author.id)
     address = rpc.getaddressesbyaccount(message.author.id)[0]
-    if address == False:
-        address = rpc.getaccountaddress(message.author.id)
+
     print(address)
     tx = rpc.sendtoaddress(address, amount)
 
