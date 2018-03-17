@@ -9,7 +9,6 @@ def getBlockHash(rpc, client, message):
     block_hash = rpc.getblockhash(int(block_number))
 
     responce = discord.Embed(title='Block Hash', colour=0xDEADBF)
-    responce.set_author(name=client.user.name)
     
     responce.add_field(name="block : " + str(block_number), value=block_hash, inline=False)
     return responce

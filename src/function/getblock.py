@@ -8,8 +8,7 @@ def getBlock(rpc, client, message):
     block = rpc.getblock(tx)
     print(block)
     responce = discord.Embed(title=tx, colour=0xDEADBF)
-    responce.set_author(name=client.user.name)
-    
+ 
     responce.add_field(name="confirmations : ", value=block["confirmations"], inline=True)
     responce.add_field(name="height : ", value=block["height"], inline=True)
     responce.add_field(name="difficulty : ", value=block["difficulty"], inline=True)
