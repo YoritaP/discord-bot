@@ -18,8 +18,8 @@ async def on_ready():
 
 @discord_client.event
 async def on_message(message):
-    await getMessage.getMessage(rpc_connection, discord_client, message)
+    await getMessage.getMessage(discord_client, message)
 
 if __name__ == '__main__':
-    token, rpc_connection = init.init()
+    token = init.discord_init()
     discord_client.run(token)

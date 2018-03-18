@@ -1,7 +1,7 @@
 import discord
 
 #get help command
-def command(rpc, client, message):
+def command(client, message):
     print("called : command")
     
     responce = discord.Embed(title='Command list', colour=0xDEADBF)

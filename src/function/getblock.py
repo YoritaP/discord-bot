@@ -1,8 +1,12 @@
 import discord
+import function.bitcoin_init
 
 #get bitcoin block info
-def getBlock(rpc, client, message):
+def getBlock(client, message):
     print("called : getBlock")
+
+    rpc = function.bitcoin_init.bitcoin_init()
+    
     tx = message.content[10:]
     print("tx : " + tx)
     block = rpc.getblock(tx)

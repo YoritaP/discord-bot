@@ -1,8 +1,11 @@
 import discord
+import function.bitcoin_init
 
 #get bitcoin balance
-def pre_mining(rpc, client, message):
+def pre_mining(client, message):
     print("called : generate")
+    
+    rpc = function.bitcoin_init.bitcoin_init()
     
     tx = rpc.generate(101)
 
@@ -15,9 +18,11 @@ def pre_mining(rpc, client, message):
     return responce
 
 #generate 1 block
-def mining(rpc, client, message):
+def mining(client, message):
     print("called : generate")
     
+    rpc = function.bitcoin_init.bitcoin_init()
+
     tx = rpc.generate(1)
     print(tx[0])
 

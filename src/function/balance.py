@@ -1,10 +1,12 @@
 import discord
-import asyncio
+import function.bitcoin_init
 
 #get bitcoin balance
-def getbalance(rpc, client, message):
+def getbalance(client, message):
     print("called : balance")
     
+    rpc = function.bitcoin_init.bitcoin_init()
+
     id = str(message.author.id)
 
     address = rpc.getaddressesbyaccount(id)
@@ -21,6 +23,6 @@ def getbalance(rpc, client, message):
     responce = discord.Embed(title='Bitcoin balance', colour=0xDEADBF)
     
     responce.add_field(name="Address : ", value=address, inline=False)
-    responce.add_field(name="user : ", value="<@" + id + ">", inline=True)
+    responce.add_field(name="user : ", value=message.author.name, inline=True)
     responce.add_field(name="btc : ", value=balance, inline=True)
     return responce

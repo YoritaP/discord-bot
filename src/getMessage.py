@@ -1,8 +1,9 @@
 import function
 
-async def getMessage(rpc, client, message):
+async def getMessage(client, message):
+    
     if message.content.startswith("!command"):
-        responce = function.command.command(rpc, client, message)
+        responce = function.command.command(client, message)
         await client.send_message(message.channel, embed=responce)
 
     if message.content.startswith("!debug"):
@@ -16,31 +17,33 @@ async def getMessage(rpc, client, message):
             await client.logout()
     
     if message.content.startswith("!getBlockCount"):
-        responce = function.getblockcount.getBlockCount(rpc)
+        responce = function.getblockcount.getBlockCount()
         res = "block : " + str(responce)
         print(res)
         await client.send_message(message.channel, res)
     
     if message.content.startswith("!getBlockHash "):
-        responce = function.getblockhash.getBlockHash(rpc, client, message)
+        responce = function.getblockhash.getBlockHash(client, message)
         await client.send_message(message.channel, embed=responce)
 
     if message.content.startswith("!getBlock "):
-        responce = function.getblock.getBlock(rpc, client, message)
+        responce = function.getblock.getBlock(client, message)
         await client.send_message(message.channel, embed=responce)
 
     if message.content.startswith("!mining"):
-        responce = function.generate.mining(rpc, client, message)
+        responce = function.generate.mining(client, message)
         await client.send_message(message.channel, embed=responce)
 
     if message.content.startswith("!pre_mining"):
-        responce = function.generate.pre_mining(rpc, client, message)
+        responce = function.generate.pre_mining(client, message)
         await client.send_message(message.channel, embed=responce)
 
     if message.content.startswith("!faucet"):
-        responce = function.tip.faucet(rpc, client, message)
+        responce = function.tip.faucet(client, message)
         await client.send_message(message.channel, embed=responce)
 
     if message.content.startswith("!balance"):
-        responce = function.balance.getbalance(rpc, client, message)
+        responce = function.balance.getbalance(client, message)
         await client.send_message(message.channel, embed=responce)
+
+    function.debug.getMessageMining()

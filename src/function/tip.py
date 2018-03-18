@@ -1,10 +1,12 @@
 import discord
-import asyncio
+import function.bitcoin_init
 
 #get bitcoin balance
-def faucet(rpc, client, message):
+def faucet(client, message):
     print("called : tip:faucet")
     
+    rpc = function.bitcoin_init.bitcoin_init()
+
     balance = rpc.getbalance("")
     print("Amount : " + str(balance))
     amount = balance / 100
@@ -25,7 +27,7 @@ def faucet(rpc, client, message):
 
     print(tx)
     responce = discord.Embed(title='Faucet', colour=0xDEADBF)
-    responce.add_field(name="user : ", value="<@" + id + ">", inline=False)
+    responce.add_field(name="user : ", value=message.author.name, inline=False)
     responce.add_field(name="amount : ", value=amount, inline=False)
     responce.add_field(name="txid : ", value=tx, inline=False)
     return responce

@@ -6,4 +6,6 @@ from . import generate # regtest only!
 from . import balance
 from . import tip
 
+from . import bitcoin_init
+
 from . import debug
