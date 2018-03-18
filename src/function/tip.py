@@ -1,5 +1,5 @@
 import discord
-
+import asyncio
 
 #get bitcoin balance
 def faucet(rpc, client, message):
@@ -11,8 +11,14 @@ def faucet(rpc, client, message):
 
     id = str(message.author.id)
 
-    rpc.getaccountaddress(id)
-    address = rpc.getaddressesbyaccount(id)[0]
+    address = rpc.getaddressesbyaccount(id)
+    if address:
+        address = address[0]
+        balance = float(rpc.getbalance(id))
+    else:
+        rpc.getnewaddress(id)
+        address = rpc.getaddressesbyaccount(id)
+        address = address[0]
 
     print(address)
     tx = rpc.sendtoaddress(address, amount)

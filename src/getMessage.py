@@ -5,6 +5,10 @@ async def getMessage(rpc, client, message):
         responce = function.command.command(rpc, client, message)
         await client.send_message(message.channel, embed=responce)
 
+    if message.content.startswith("!debug"):
+        responce = function.debug.debug(client, message)
+        await client.send_message(message.channel, embed=responce)
+
     if message.content.startswith("!die"):
         if message.author.id == "282462612497891328":
             print("bot logout!")

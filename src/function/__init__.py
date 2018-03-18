@@ -5,3 +5,5 @@ from . import getblock
 from . import generate # regtest only!
 from . import balance
 from . import tip
+
+from . import debug
