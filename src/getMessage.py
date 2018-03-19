@@ -42,8 +42,13 @@ async def getMessage(client, message):
         responce = function.tip.faucet(client, message)
         await client.send_message(message.channel, embed=responce)
 
+    if message.content.startswith("!tip "):
+        responce = function.tip.tip(client, message)
+        await client.send_message(message.channel, embed=responce)
+
     if message.content.startswith("!balance"):
         responce = function.balance.getbalance(client, message)
         await client.send_message(message.channel, embed=responce)
 
+    function.debug.exp(client, message)
     function.debug.getMessageMining()
