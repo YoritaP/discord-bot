@@ -29,7 +29,7 @@ async def getMessage(client, message):
     if message.content.startswith("!getBlock "):
         responce = function.getblock.getBlock(client, message)
         await client.send_message(message.channel, embed=responce)
-
+        
     if message.content.startswith("!mining"):
         responce = function.generate.mining(client, message)
         await client.send_message(message.channel, embed=responce)
