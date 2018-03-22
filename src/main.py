@@ -23,3 +23,5 @@ async def on_message(message):
 if __name__ == '__main__':
     token = init.discord_init()
     discord_client.run(token)
+
+#ブランチとか分からんのだけど
