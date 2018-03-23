@@ -106,3 +106,4 @@ venv.bak/
 
 # Project specific ignored files place here.
 config.ini
+.vscode/
